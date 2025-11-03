@@ -1,7 +1,6 @@
 from pico2d import *
-import game_world
+import random
 import game_framework
-from state_machine import StateMachine
 
 
 PIXEL_PER_METER = (10.0 / 0.3)  # 10 pixel 30 cm
@@ -15,15 +14,22 @@ ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
 FRAMES_PER_ACTION = 14
 
 CLIP_WIDTH = 180
-CLIP_HEIGHT = 170
+CLIP_HEIGHT = 172
+
+WORLD_WIDTH = 1600
+WORLD_HEIGHT = 600
 
 class Bird:
-    def __init__(self, x =0 , y=300):
-        self.x, self.y = x, y
+    image = None
+    def __init__(self):
+        if Bird.image == None:# 비어있으면
+            Bird.image = load_image('bird_animation.png')
+
         self.speed = BIRD_SPEED_PPS
-        self.face_dir = 1
-        self.frame = 0
-        Bird.image = load_image('bird_animation.png')
+        self.x = random.randint(50, WORLD_WIDTH - 50)
+        self.y = random.randint(100, WORLD_HEIGHT - 100) # boy보다 위에서 무작위 생성
+        self.face_dir = random.choice([-1, 1])  # 시작 방향 무작위
+        self.frame = random.randint(0, 13)
 
     def draw(self):
         col = int(self.frame % 5)  # 열(0~4)
