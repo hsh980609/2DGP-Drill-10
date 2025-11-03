@@ -33,7 +33,7 @@ class Bird:
 
         self.speed = BIRD_SPEED_PPS
         self.x = random.randint(50, WORLD_WIDTH - 50)
-        self.y = random.randint(100, WORLD_HEIGHT - 100)
+        self.y = random.randint(200, WORLD_HEIGHT - 100)
         self.face_dir = random.choice([-1, 1])  # 시작 방향 무작위
         self.frame = random.randint(0, 13)
 
