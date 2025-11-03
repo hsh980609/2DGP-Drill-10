@@ -17,7 +17,7 @@ FRAMES_PER_ACTION = 4
 class Bird:
     def __init__(self, x =0 , y=300):
         self.x, self.y = x, y
-        self.speed = 500
+        self.speed = BIRD_SPEED_PPS
         self.face_dir = 1
         self.frame = 0
         Bird.image = load_image('bird_animation.png')
