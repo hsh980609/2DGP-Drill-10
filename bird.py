@@ -24,6 +24,7 @@ CLIP_HEIGHT = 172
 WORLD_WIDTH = 1600
 WORLD_HEIGHT = 600
 
+
 class Bird:
     image = None
     def __init__(self):
