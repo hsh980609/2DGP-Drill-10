@@ -2,13 +2,18 @@ from pico2d import *
 import random
 import game_framework
 
+# 새 크기
+BIRD_WIDTH = 100
+BIRD_HEIGHT = 100
 
+# 새 속도
 PIXEL_PER_METER = (10.0 / 0.3)  # 10 pixel 30 cm
 BIRD_SPEED_KMPH = 30.0  # 시속 30km
 BIRD_SPEED_MPM = (BIRD_SPEED_KMPH * 1000.0 / 60.0)
 BIRD_SPEED_MPS = (BIRD_SPEED_MPM / 60.0)
 BIRD_SPEED_PPS = (BIRD_SPEED_MPS * PIXEL_PER_METER)
 
+#날개짓 속도
 TIME_PER_ACTION = 0.5
 ACTION_PER_TIME = 1.0 / TIME_PER_ACTION
 FRAMES_PER_ACTION = 14
@@ -42,7 +47,7 @@ class Bird:
         if self.face_dir == -1:
             flip_value = 'h'
 
-        self.image.clip_composite_draw(clip_x, clip_y, CLIP_WIDTH, CLIP_HEIGHT,0, flip_value, self.x, self.y, 100, 100)
+        self.image.clip_composite_draw(clip_x, clip_y, CLIP_WIDTH, CLIP_HEIGHT,0, flip_value, self.x, self.y, BIRD_WIDTH, BIRD_HEIGHT)
 
     def update(self):
         self.frame = (self.frame + FRAMES_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % FRAMES_PER_ACTION
