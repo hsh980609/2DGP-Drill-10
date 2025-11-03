@@ -5,6 +5,7 @@ from state_machine import StateMachine
 
 class Fly:
     def __init__(self, bird):
+        self.bird = bird
         pass
     def enter(self, e):
         pass
@@ -13,6 +14,10 @@ class Fly:
     def do(self):
         pass
     def draw(self):
+        if self.bird.face_dir == 1: # right
+            self.bird.image.clip_draw(int(self.bird.frame) * 100, 100, 100, 100, self.bird.x, self.bird.y)
+        else: # face_dir == -1: # left
+            self.bird.image.clip_composite_draw(int(self.bird.frame) * 100, 0, 100, 100, 0,'h' , self.bird.x, self.bird.y)
         pass
 
 
